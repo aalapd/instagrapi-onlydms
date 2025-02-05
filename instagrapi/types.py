@@ -1,19 +1,24 @@
 from datetime import datetime
 from typing import List, Optional, Union
+from pydantic.types import FilePath
+from pydantic import BaseConfig as Config
 
 from pydantic import (
     BaseModel,
-    ConfigDict,
-    FilePath,
     HttpUrl,
     ValidationError,
-    field_validator,
+    validator
 )
 
 class TypesBaseModel(BaseModel):
-    model_config = ConfigDict(
-        coerce_numbers_to_str=True
-    )  # (jarrodnorwell) fixed city_id issue
+    class Config:
+        arbitrary_types_allowed = True
+        use_enum_values = True
+        anystr_strip_whitespace = True
+        validate_assignment = True
+        error_msg_templates = {
+            'value_error.missing': 'Field required',
+        }
 
 def validate_external_url(cls, v):
     if v is None or (v.startswith("http") and "://" in v) or isinstance(v, str):
@@ -85,7 +90,7 @@ class User(TypesBaseModel):
     instagram_location_id: Optional[str] = None
     interop_messaging_user_fbid: Optional[str] = None
 
-    _external_url = field_validator("external_url")(validate_external_url)  # Updated to use field_validator
+    _external_url = validator("external_url")(validate_external_url) 
 
 class Account(TypesBaseModel):
     pk: str
@@ -102,7 +107,7 @@ class Account(TypesBaseModel):
     gender: Optional[int] = None
     email: Optional[str] = None
 
-    _external_url = field_validator("external_url")(validate_external_url)  # Updated to use field_validator
+    _external_url = validator("external_url", allow_reuse=True)(validate_external_url)  
 
 class UserShort(TypesBaseModel):
     def __hash__(self):

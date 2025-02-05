@@ -188,7 +188,7 @@ class PostLoginFlowMixin:
         return all(check_flow)
 
     def get_timeline_feed(
-        self, reason: TIMELINE_FEED_REASON = "pull_to_refresh", max_id: str = None
+        self, reason: Union[Literal["cold_start_fetch", "warm_start_fetch", "pagination", "pull_to_refresh", "auto_refresh"], str] = "pull_to_refresh", max_id: str = None
     ) -> Dict:
         """
         Get your timeline feed
@@ -244,7 +244,7 @@ class PostLoginFlowMixin:
         )
 
     def get_reels_tray_feed(
-        self, reason: REELS_TRAY_REASON = "pull_to_refresh"
+        self, reason: Union[Literal["cold_start", "pull_to_refresh"], str] = "pull_to_refresh"
     ) -> Dict:
         """
         Get your reels tray feed

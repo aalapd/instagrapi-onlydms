@@ -57,8 +57,8 @@ class DirectMixin:
     def direct_threads(
         self,
         amount: int = 20,
-        selected_filter: SELECTED_FILTER = "",
-        box: BOX = "",
+        selected_filter: Literal["flagged", "unread"] = "",
+        box: Literal["general", "primary"] = "",
         thread_message_limit: Optional[int] = None,
     ) -> List[DirectThread]:
         """
@@ -99,8 +99,8 @@ class DirectMixin:
 
     def direct_threads_chunk(
         self,
-        selected_filter: SELECTED_FILTER = "",
-        box: BOX = "",
+        selected_filter: Literal["flagged", "unread"] = "",
+        box: Literal["general", "primary"] = "",
         thread_message_limit: Optional[int] = None,
         cursor: str = None,
     ) -> Tuple[List[DirectThread], str]:
@@ -388,7 +388,7 @@ class DirectMixin:
         text: str,
         user_ids: List[int] = [],
         thread_ids: List[int] = [],
-        send_attribute: SEND_ATTRIBUTE = "message_button",
+        send_attribute: Literal["message_button", "inbox_search"] = "message_button",
         reply_to_message: Optional[DirectMessage] = None,
     ) -> DirectMessage:
         """
@@ -680,7 +680,7 @@ class DirectMixin:
         return self.direct_message_seen(thread_id, thread.messages[0].id)
 
     def direct_search(
-        self, query: str, mode: SEARCH_MODE = "universal"
+        self, query: str, mode: Literal["raven", "universal"] = "universal"
     ) -> List[UserShort]:
         """
         Search threads by query
@@ -828,7 +828,7 @@ class DirectMixin:
         self,
         media_id: str,
         user_ids: List[int],
-        send_attribute: SEND_ATTRIBUTES_MEDIA = "feed_timeline",
+        send_attribute: Literal["feed_timeline", "feed_contextual_chain", "feed_short_url", "feed_contextual_self_profile", "feed_contextual_profile"] = "feed_timeline",
         media_type: str = "photo",
     ) -> DirectMessage:
         """
