@@ -13,6 +13,7 @@ Basic version of Instagrapi developed by Mark Subzeroid
 requirements = [
     "pydantic==1.8.2",
     "pycryptodomex==3.21.0",
+    "requests==2.32.3"
 ]
 
 setup(
