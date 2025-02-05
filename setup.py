@@ -7,35 +7,22 @@ Use the most recent version of the API from Instagram.
 
 Features:
 
-1. Performs Public API (web, anonymous) or Private API (mobile app, authorized)
-   requests depending on the situation (to avoid Instagram limits)
-2. Challenge Resolver have Email (as well as recipes for automating receive a code from email) and SMS handlers
-3. Support upload a Photo, Video, IGTV, Clips (Reels), Albums and Stories
-4. Support work with User, Media, Insights, Collections, Location (Place), Hashtag and Direct objects
-5. Like, Follow, Edit account (Bio) and much more else
-6. Insights by account, posts and stories
-7. Build stories with custom background, font animation, swipe up link and mention users
-8. In the next release, account registration and captcha passing will appear
+Basic version of Instagrapi developed by Mark Subzeroid
 """
 
 requirements = [
-    "requests<3.0,>=2.25.1",
-    "PySocks==1.7.1",
-    "pydantic==2.10.6",
-    "pycryptodomex==3.21.0",
+    "requests==2.32.3",
+    "pydantic==1.8.2",
+    "pycryptodomex==3.12.0",
 ]
-# requirements = [
-#     line.strip()
-#     for line in open('requirements.txt').readlines()
-# ]
 
 setup(
-    name="instagrapi",
-    version="2.1.3",
-    author="Mark Subzeroid",
-    author_email="143403577+subzeroid@users.noreply.github.com",
+    name="instagrapi-onlydms", 
+    version="0.0.1",
+    author="Aalap Davjekar",
+    author_email="143403577+subzeroid@users.noreply.github.com", 
     license="MIT",
-    url="https://github.com/subzeroid/instagrapi",
+    url="https://github.com/aalapd/instagrapi-onlydms",
     install_requires=requirements,
     keywords=[
         "instagram private api",
@@ -45,27 +32,8 @@ setup(
         "instagram",
         "instagram-scraper",
         "instagram-client",
-        "instagram-stories",
-        "instagram-feed",
-        "instagram-reels",
-        "instagram-insights",
-        "downloader",
-        "uploader",
-        "videos",
-        "photos",
-        "albums",
-        "igtv",
-        "reels",
-        "stories",
-        "pictures",
-        "instagram-user-photos",
-        "instagram-photos",
-        "instagram-metadata",
-        "instagram-downloader",
-        "instagram-uploader",
-        "instagram-note",
     ],
-    description="Fast and effective Instagram Private API wrapper",
+    description="Fast and effective Instagram Private API wrapper (forked for only DM retrieval)",
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
