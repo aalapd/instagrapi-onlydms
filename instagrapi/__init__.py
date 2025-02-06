@@ -17,7 +17,6 @@ from instagrapi.mixins.public import (
     TopSearchesPublicMixin,
 )
 from instagrapi.mixins.totp import TOTPMixin
-from instagrapi.mixins.track import TrackMixin
 from instagrapi.mixins.user import UserMixin
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)

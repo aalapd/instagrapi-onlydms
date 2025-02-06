@@ -2,14 +2,11 @@ import json
 import logging
 import time
 
-try:
-    from simplejson.errors import JSONDecodeError
-except ImportError:
-    from json.decoder import JSONDecodeError
+from json.decoder import JSONDecodeError
 
 import requests
 from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+from urllib3.util.retry import Retry
 
 from instagrapi.exceptions import (
     ClientBadRequestError,
